@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-display: "Playfair Display", Georgia, serif;
+  --color-primary: #1a5fff;
+  --color-primary-dark: #0d47d4;
+  --color-primary-light: #4a7fff;
+  --color-dark: #0a0f1e;
+  --color-dark-lighter: #121a2f;
+  --color-dark-card: #151d33;
+  --color-silver: #c0c8d8;
+  --color-silver-light: #e8ecf2;
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-dark);
+    color: white;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--color-primary);
+    color: white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-dark);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .text-gradient {
+    background: linear-gradient(
+      135deg,
+      var(--color-primary) 0%,
+      var(--color-silver-light) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass-card {
+    background: rgba(21, 29, 51, 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(26, 95, 255, 0.15);
+  }
+
+  .hero-gradient {
+    background: radial-gradient(
+      ellipse at 50% 0%,
+      rgba(26, 95, 255, 0.15) 0%,
+      transparent 60%
+    );
+  }
+
+  .line-glow {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-primary),
+      transparent
+    );
+    height: 1px;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .animate-pulse-glow {
+    animation: pulseGlow 3s ease-in-out infinite;
+  }
+
+  @keyframes pulseGlow {
+    0%,
+    100% {
+      box-shadow: 0 0 20px rgba(26, 95, 255, 0.2);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(26, 95, 255, 0.4);
+    }
+  }
+}
