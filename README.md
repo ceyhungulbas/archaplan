@@ -18,7 +18,7 @@ React 19 + Vite 8 + Tailwind CSS v4 ile geliştirilmiş, koyu temalı, animasyon
 - [Tasarım sistemi](#tasarım-sistemi)
 - [SEO ve meta bilgileri](#seo-ve-meta-bilgileri)
 - [İletişim bilgilerini güncelleme](#i̇letişim-bilgilerini-güncelleme)
-- [Bilinen eksikler](#bilinen-eksikler)
+- [Paylaşım görselleri](#paylaşım-görselleri)
 - [Yayına alma](#yayına-alma)
 
 ---
@@ -89,6 +89,8 @@ archaplan/
 ├── pnpm-lock.yaml          # Tek geçerli kilit dosyası
 ├── public/                 # Olduğu gibi kopyalanan statik dosyalar
 │   ├── favicon.svg
+│   ├── apple-touch-icon.png    # 180×180, iOS ana ekran ikonu
+│   ├── og-image.jpg            # 1200×630, sosyal medya paylaşım görseli
 │   ├── icons.svg
 │   ├── robots.txt
 │   └── sitemap.xml
@@ -219,16 +221,22 @@ grep -rn "905456400497\|archaplan35@gmail.com\|archaplandesign" index.html src/
 
 ---
 
-## Bilinen eksikler
+## Paylaşım görselleri
 
-`index.html` içinde referans verilen ancak `public/` altında **bulunmayan** iki dosya var — bunlar şu an 404 dönüyor:
+`index.html`'in referans verdiği iki görsel `public/` altında hazırdır:
 
-| Dosya | Referans | Etkisi |
+| Dosya | Boyut | Nerede kullanılır |
 |---|---|---|
-| `og-image.jpg` | `og:image`, `twitter:image`, JSON-LD `image` | WhatsApp / Facebook / LinkedIn / X paylaşımlarında önizleme görseli çıkmaz |
-| `apple-touch-icon.png` | `<link rel="apple-touch-icon">` | iOS ana ekrana eklendiğinde ikon bozuk görünür |
+| `og-image.jpg` | 1200×630 | `og:image`, `twitter:image`, JSON-LD `image` — WhatsApp / Facebook / LinkedIn / X paylaşım önizlemesi |
+| `apple-touch-icon.png` | 180×180 | `<link rel="apple-touch-icon">` — iOS ana ekran ikonu |
 
-Önerilen boyutlar: `og-image.jpg` için **1200×630 px**, `apple-touch-icon.png` için **180×180 px**. İkisini de `public/` altına koymak yeterlidir; ek yapılandırma gerekmez.
+İkisi de sitenin kendi paletiyle üretildi: `og-image.jpg`, `tasarim1.jpg` villa render'ı üzerine lacivert perde, Playfair Display başlık ve iletişim satırı; `apple-touch-icon.png` ise `favicon.svg` monogramının marka arka planına ortalanmış hâli.
+
+Yeniden üretmek gerekirse dikkat edilecekler:
+
+- **`apple-touch-icon.png` alfa kanalı içermemeli.** iOS şeffaf PNG'leri siyah zemine oturtur ve ikon bozuk görünür. Köşeleri de yuvarlatmayın; iOS kendi maskesini uygular.
+- **`og-image.jpg` 1200×630 olmalı** ve metinler kenarlardan uzak durmalı; bazı platformlar görseli kırpar.
+- Paylaşım görselini değiştirdikten sonra platformlar eski hâli önbellekte tutar. [OpenGraph.xyz](https://www.opengraph.xyz/) veya Facebook Sharing Debugger üzerinden yeniden taratın.
 
 ---
 
@@ -245,7 +253,6 @@ pnpm preview   # canlıya göndermeden önce dist/ çıktısını lokalde doğru
 
 Yayın sonrası kontrol listesi:
 
-- [ ] `og-image.jpg` ve `apple-touch-icon.png` eklendi mi?
 - [ ] `sitemap.xml` içindeki `<lastmod>` tarihleri güncel mi?
 - [ ] Paylaşım önizlemesi doğrulandı mı? ([OpenGraph.xyz](https://www.opengraph.xyz/))
 - [ ] Yapısal veri hatasız mı? ([Rich Results Test](https://search.google.com/test/rich-results))
