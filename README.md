@@ -4,7 +4,7 @@
 
 React 19 + Vite 8 + Tailwind CSS v4 ile geliştirilmiş, koyu temalı, animasyonlu ve SEO'ya hazır bir landing page.
 
-🔗 https://www.archaplan.com.tr/
+🔗 https://archaplan.com/
 
 ---
 
@@ -186,7 +186,7 @@ Tüm SEO yapılandırması **`index.html`'in `<head>` bölümünde** toplanmış
 ### Neler tanımlı
 
 - **Temel meta:** `title`, `description`, `keywords`, `author`, `robots: index, follow`
-- **Canonical:** `https://www.archaplan.com.tr/`
+- **Canonical:** `https://archaplan.com/`
 - **Dil:** `<html lang="tr">`, `og:locale = tr_TR`
 - **Open Graph:** Facebook, WhatsApp ve LinkedIn paylaşımları için `og:type`, `og:url`, `og:title`, `og:description`, `og:image`, `og:site_name`
 - **Twitter Card:** `summary_large_image` formatında başlık, açıklama ve görsel
