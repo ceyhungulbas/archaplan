@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.archaplan.com.tr/sitemap.xml
+Sitemap: https://archaplan.com/sitemap.xml
